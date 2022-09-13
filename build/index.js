@@ -1,4 +1,7 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const NumbersCollection_1 = require("./NumbersCollection");
+const Sorter_1 = require("./Sorter");
 //MY ATTEMPT (YAY)
 // const nums = [10, 5, 18, -3]
 // const bubbleSort = (arr: number[]) => {
@@ -18,49 +21,10 @@
 // }
 // console.log(bubbleSort(nums))
 // HIS CODE
-class Sorter {
-    // collection: number[];
-    // constructor (collection: number[]) {
-    //   this.collection = collection
-    // }
-    //REFACTOR
-    constructor(collection) {
-        this.collection = collection;
-    }
-    sort() {
-        const { length } = this.collection;
-        // FOR NUMBERS
-        if (typeof this.collection !== 'string') {
-            for (let i = 0; i < length; i++) {
-                for (let j = 0; j < length - i - 1; j++) {
-                    if (this.collection[j] > this.collection[j + 1]) {
-                        const temp = this.collection[j];
-                        this.collection[j] = this.collection[j + 1];
-                        this.collection[j + 1] = temp;
-                    }
-                }
-            }
-        }
-        // FOR STRINGS (MY CODE) - IF STRING, SPLIT STRING INTO ARRAY,
-        //SORT BY CHARCODE, REJOIN AND ASSIGN TO this.collection
-        if (typeof this.collection === 'string') {
-            const result = this.collection.split("");
-            for (let i = 0; i < length; i++) {
-                for (let j = 0; j < length - i - 1; j++) {
-                    if (result[j].charCodeAt(0) > result[j + 1].charCodeAt(0)) {
-                        const temp = result[j];
-                        result[j] = result[j + 1];
-                        result[j + 1] = temp;
-                    }
-                }
-            }
-            this.collection = result.join("");
-        }
-    }
-}
-const sorter = new Sorter([10, 3, -5, 0]);
+const collection = new NumbersCollection_1.NumbersCollection([10, 3, -5, 0]);
+const sorter = new Sorter_1.Sorter(collection);
 sorter.sort();
-const sorterTwo = new Sorter("baqhgES");
-sorterTwo.sort();
-console.log(sorter.collection);
-console.log(sorterTwo.collection);
+console.log(collection.data);
+// const sorterTwo = new Sorter("baqhgES")
+// sorterTwo.sort()
+// console.log(sorterTwo.collection)
