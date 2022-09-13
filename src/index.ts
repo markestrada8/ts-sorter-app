@@ -26,10 +26,12 @@ class Sorter {
   //   this.collection = collection
   // }
   //REFACTOR
-  constructor (public collection: number[]) {}
+  constructor (public collection: number[] | string) {}
+  
   sort(): void {
     const {length} = this.collection
-
+    // FOR NUMBERS
+    if (typeof this.collection !== 'string') {
     for (let i = 0; i < length; i++) {
       for (let j = 0; j < length - i - 1; j++) {
         if (this.collection[j] > this.collection[j + 1]) {
@@ -40,8 +42,28 @@ class Sorter {
       }
     }
   }
+    // FOR STRINGS (MY CODE) - IF STRING, SPLIT STRING INTO ARRAY,
+    //SORT BY CHARCODE, REJOIN AND ASSIGN TO this.collection
+    if (typeof this.collection === 'string') {
+      const result = this.collection.split("")
+      for (let i = 0; i < length; i++) {
+        for (let j = 0; j < length - i - 1; j++) {
+          if (result[j].charCodeAt(0) > result[j+1].charCodeAt(0)) {
+            const temp = result[j]
+            result[j] = result[j + 1]
+            result[j + 1] = temp
+          }
+        }
+      }
+      this.collection = result.join("")
+    }
+  }
 }
 
 const sorter = new Sorter([10, 3, -5, 0])
 sorter.sort();
+
+const sorterTwo = new Sorter("baqhgES")
+sorterTwo.sort()
 console.log(sorter.collection)
+console.log(sorterTwo.collection)
