@@ -1,4 +1,5 @@
 import { NumbersCollection } from './NumbersCollection';
+import { CharactersCollection } from './CharactersCollection';
 import { Sorter } from './Sorter'
 
 //MY ATTEMPT (YAY)
@@ -28,6 +29,8 @@ const collection = new NumbersCollection([10, 3, -5, 0])
 const sorter = new Sorter(collection)
 sorter.sort()
 console.log(collection.data)
-// const sorterTwo = new Sorter("baqhgES")
-// sorterTwo.sort()
-// console.log(sorterTwo.collection)
+
+const charsCollection = new CharactersCollection('zhADuG')
+const sorterTwo = new Sorter(charsCollection)
+sorterTwo.sort()
+console.log(charsCollection.data)

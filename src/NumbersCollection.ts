@@ -2,7 +2,7 @@ export class NumbersCollection {
   constructor(public data: number[]) { }
 
   //GETTER SYNTAX
-  get length() {
+  get length(): number {
     return this.data.length;
   }
 
