@@ -1,10 +1,12 @@
+import { Sorter } from './Sorter';
+
 class Node {
   next: Node | null = null
 
   constructor(public data: number) { }
 }
 
-export class LinkedList {
+export class LinkedList extends Sorter {
   head: Node | null = null
 
   add(data: number): void {
@@ -56,7 +58,7 @@ export class LinkedList {
     if (!this.head) {
       throw new Error('Empty list')
     }
-    return this.at(leftIndex).data === this.at(rightIndex).data
+    return this.at(leftIndex).data > this.at(rightIndex).data
   }
 
   swap(leftIndex: number, rightIndex: number): void {
